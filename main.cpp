@@ -5,7 +5,7 @@
 // Dr Kevin Roark
 // Date:
 /* Description:
-   A Program that will
+   A Program that will 
 */
 #include <iostream>
 #include <string>
@@ -26,6 +26,7 @@ int main() {
     {
         // Main Menu
         mainMenu(choice);
+
         // Main Menu options
         switch (choice)
         {
@@ -39,7 +40,7 @@ int main() {
             break;
         case 3:
             // Views Cart Information
-            viewCart(total, taxAmt, taxRate);
+            viewCart(total, taxAmt, taxRate, choice);
             break;
         case 4:
             // Item Checkout
@@ -48,7 +49,7 @@ int main() {
         case 0: 
             cout << " Exiting Application, Thank You Hope To See You Again!" << endl;
         default:
-            cout << "Invalid Selection Please Try Again" << endl;
+            break;
         }
     }
     // End of Program

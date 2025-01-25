@@ -17,7 +17,7 @@ int choiceMaker(int&);
 void viewInventory(int, double&, double, double);
 void viewAccount(string, double, int);
 void addToCart(int, double&, double&, double);
-void viewCart(double&, double, double);
+void viewCart(double&, double, double, int);
 void itemCheckOut(double&, double&, int, double&, double);
 
 

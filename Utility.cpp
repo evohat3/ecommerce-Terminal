@@ -14,7 +14,6 @@
 #include<string>    
 using namespace std;
 
-
 // **** Items Struct
 struct Items {
     string name;
@@ -74,7 +73,6 @@ int choiceMaker(int& choice){
     cout << "" << "Enter The Number For your Choice: ";
     cin >> choice;
     cout << setfill('*') << setw(30) << "" << endl;
-
     return choice;
 }
     // Inventory menu
@@ -106,9 +104,9 @@ void viewInventory(int itemNum, double& total, double taxAmt, double taxRate){
         case 0:
             break;
         default:
+            "invalid choice please try again";
             break;
         }
-
     }
 }
     // Wallet Info
@@ -119,6 +117,12 @@ void viewAccount(string name, double wallet, int choice) {
     cout << endl << setfill('-') << setw(30) << "" << endl;
     cout << endl << " 0 - Previous Menu" << endl;
     choiceMaker(choice);
+    if (choice != 0) {
+        cout << "Invalid Selection Please Try Again" << endl;
+        choiceMaker(choice);
+    } else{
+        return;
+    }
 }
     // Function that adds the user's Choice of items to the cart Vector
 void addToCart(int itemNum, double& total, double& taxAmt, double taxRate){
@@ -136,7 +140,7 @@ void addToCart(int itemNum, double& total, double& taxAmt, double taxRate){
         }
 }
     // Function that displays the items in the user's cart from the cart vector
-void viewCart(double& total, double taxAmt, double taxRate){
+void viewCart(double& total, double taxAmt, double taxRate, int choice){
     cout << setfill('-') << setw(30) << "" << endl;
     cout << setfill(' ') << setw(5) << "" << "Items In Your Cart" << endl;
     cout << setfill('-') << setw(30) << "" << endl;
@@ -156,12 +160,31 @@ void viewCart(double& total, double taxAmt, double taxRate){
     cout << "Price: $" << total << endl;
     cout << "Total Price: $" << total + taxAmt << endl; 
     }
+    cout << endl << "0 - Return To Previous Menu" << endl;
+    choiceMaker(choice);
+
+    if (choice != 0) {
+        
+        while (choice != 0)
+        {
+            cout << "Invalid Selection Please Try Again" << endl;
+            choiceMaker(choice);
+        }
+        
+    } else {
+        return;
+    }
 }
     // Function that carries out the checkout process, ie. subtract from wallet balance and remove items from the cart
 void itemCheckOut(double& wallet, double& total, int choice, double& taxAmt, double taxRate){
     taxAmt = total * taxRate;
+    cout << setfill('-') << setw(30) << "" << endl;
+    cout << setfill(' ') << setw(5) << "" << "--- Checkout ---" << endl;
+    cout << setfill('-') << setw(30) << "" << endl;
+
     cout << "your wallet balance: $" << wallet << endl;
     cout << "Will be deducted by $" << total << " + $" << setprecision(2) << fixed << taxAmt << " in taxes" << endl;
+    cout << "Your Total payment will be: $" << total + taxAmt <<endl;
     cout << "Do you want to continue? 1-yes 2-no" << endl;
     choiceMaker(choice);
     if (choice == 1) {
