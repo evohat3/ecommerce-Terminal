@@ -11,7 +11,7 @@
 #include<iostream>
 #include<iomanip>
 #include<vector>
-#include<string>    
+
 using namespace std;
 
 // **** Items Struct
@@ -33,9 +33,9 @@ vector<Items> inventory = {
     {"Seagate 24TB Ext HDD", 459.95, "https://www.amazon.com/dp/B0CMV9Q5MT", "Electronics"},
     {"Elegoo 3pc ESP-32", 19.99, "https://www.amazon.com/dp/B0D8T53CQ5", "Electronics"}
 };
-//  **** Cart Data
+//  **** Empty Cart Vector
 vector<Items> cart;
-// **** functions Section ****
+// **** Program functions ****
     // This function is the Intro Header
 void menuHeader(string& name, double& wallet){
     cout << endl << endl << setfill('*') << setw(30) << "" << endl;
@@ -53,7 +53,9 @@ void menuHeader(string& name, double& wallet){
         cout << "How much would you like to deposit to your wallet? $";
         cin.ignore(); // ignore the invalid input
     }
-    cout << " *** Welcome " << name << " *** " << endl;
+
+    cout << endl << setfill('-') << setw(30) << "" << endl << endl;
+    cout << setfill(' ') << setw(3) << "" << " *** Welcome " << name << " *** " << endl;
 }
     // This is the Main Menu
 void mainMenu(int& choice) {
@@ -66,14 +68,6 @@ void mainMenu(int& choice) {
     cout << "4 - Checkout" << endl;
     cout << "0 - Exit Application" << endl << endl;
     choiceMaker(choice); 
-}
-    // Reusable function that requires user input and returns the choice
-int choiceMaker(int& choice){
-    cout << setfill('*') << setw(30) << "" << endl;
-    cout << "" << "Enter The Number For your Choice: ";
-    cin >> choice;
-    cout << setfill('*') << setw(30) << "" << endl;
-    return choice;
 }
     // Inventory menu
 void viewInventory(int itemNum, double& total, double taxAmt, double taxRate){
@@ -202,3 +196,12 @@ void itemCheckOut(double& wallet, double& total, int choice, double& taxAmt, dou
     }
 }
 
+//  ** Utility Functions **
+// Reusable function that requires user input and returns the choice
+int choiceMaker(int& choice){
+    cout << setfill('*') << setw(30) << "" << endl;
+    cout << "" << "Enter The Number For your Choice: ";
+    cin >> choice;
+    cout << setfill('*') << setw(30) << "" << endl;
+    return choice;
+}

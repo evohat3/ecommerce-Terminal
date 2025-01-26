@@ -3,15 +3,21 @@
 // COSC - 2436-002
 // Nigel Poblete
 // Dr Kevin Roark
-// Date:
+// Date: 01/22/2024
 /* Description:
-   A Program that will 
+   This is a Terminal-Based E-commerce app, when you start the program it will ask
+   for your name and the amount you would like to deposit to your wallet. Then you are
+   brought to the main menu from which you can view the inventory, your wallet balance,
+   your cart and checkout or exit the program. from the view item's inventory you can add
+   an item to your cart by typing in the corresponding item # which will then calculate
+   your overall balance, with tax and when you checkout it will subtract the balance from 
+   your wallet as well as clear the cart.
 */
 #include <iostream>
 #include <string>
 #include "Utility.cpp"
 using namespace std;
-
+// Main Program
 int main() {
     int choice = -1;
     string name = "";
@@ -22,6 +28,7 @@ int main() {
     double taxAmt =  0;
     // Intro
     menuHeader(name, wallet);
+    // Main Menu Switch
     while (choice !=0)
     {
         // Main Menu
@@ -47,7 +54,10 @@ int main() {
             itemCheckOut(wallet, total, choice, taxAmt, taxRate);
             break;
         case 0: 
+            // Exiting the application
+            cout << endl << setfill('-') << setw(30) << "" << endl;
             cout << " Exiting Application, Thank You Hope To See You Again!" << endl;
+            cout << endl << setfill('-') << setw(30) << "" << endl;
         default:
             break;
         }
